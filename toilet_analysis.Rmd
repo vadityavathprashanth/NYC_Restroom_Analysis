@@ -3,13 +3,13 @@ title: "Analysis of Public Toilet Problems in NYC"
 author: "Prashanth & Jeet"
 date: "`r Sys.Date()`"
 output:
+  html_document:
+    toc: true
+    toc_depth: 2
   pdf_document:
     latex_engine: xelatex
     toc: true
     number_sections: true
-  html_document:
-    toc: true
-    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -46,7 +46,7 @@ library(arrow)
 public_restrooms <- read_csv("Public_Restrooms_20250427.csv")
 
 # Load 311 complaints dataset
-complaints <- read_csv("311_Service_Requests_from_2010_to_Present_20250427.csv")
+complaints <- read_csv("311_Service_Requests_from_2021_to_Present_20250427.csv")
 
 ```
 
