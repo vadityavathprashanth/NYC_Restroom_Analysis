@@ -1,75 +1,127 @@
-🚻 Public Toilet Cleanliness Analysis - NYC
-This project analyzes 311 Service Requests related to dirty public restrooms across New York City (NYC) by integrating service complaint data with public restroom location data. We apply spatial, statistical, and regression analysis to uncover restroom accessibility gaps and highlight areas needing improvement.
+---
 
-📂 Repository Structure
-toilet_analysis.Rmd — R Markdown containing all analysis steps, code, and explanations
+# NYC Public Restroom Analysis 🚻
 
-toilet_analysis.pdf — Final compiled report (ready to view)
+> **Spatial and statistical analysis of NYC public restroom complaints using 311 data and restroom datasets.**
 
-Public_Restrooms_20250427.csv — Cleaned NYC public restrooms dataset
+---
 
-README.md — Project overview (this file)
+# 📑 Table of Contents
+- [Project Overview](#-project-overview)
+- [Data Sources](#-data-sources)
+- [Analysis Workflow](#-analysis-workflow)
+- [Key Findings](#-key-findings)
+- [Download Data](#-download-data)
+- [How to Reproduce](#-how-to-reproduce)
+- [Project Structure](#-project-structure)
+- [Final Notes](#-final-notes)
 
-⚡ Note: .RData file is not needed to reproduce the project.
+---
 
-⚡ External Large File
-Due to GitHub's 100MB limit, the 311 complaints dataset is available separately via Google Drive:
+# 📂 Project Overview
+This project analyzes the relationship between public restroom availability and 311 cleanliness-related complaints in New York City.  
+It combines geospatial mapping, statistical testing, and visualization to better understand restroom accessibility and related citizen concerns.
 
-📥 Download 311_Service_Requests_from_2021_to_Present_20250427.csv
+---
 
-After downloading, place the file into your project folder before running the .Rmd.
+# 📚 Data Sources
+- **NYC Open Data 311 Service Requests (2021 - Present)**
+- **NYC Parks and Libraries Restroom Locations Dataset**
 
-🛠 How to Run
-Clone this GitHub repository locally.
+> *(Note: Large datasets are available via [Google Drive Link](#-download-data).)*
 
-Download the large CSV from the above link and move it into your project folder.
+---
 
-Open Public_Toilet_Analysis.Rproj in RStudio.
+# 🛠️ Analysis Workflow
+The analysis was conducted in structured steps:
 
-Open and knit toilet_analysis.Rmd to generate your HTML/PDF reports.
+1. **Data Cleaning**
+   - Filter operational restrooms
+   - Extract and standardize operating hours
+   - Assign time groups (Morning, Afternoon, Evening, Late Night)
 
-📊 Key Analysis Performed
-Data Cleaning: Refined 311 complaints and restroom datasets.
+2. **Complaints Data Preparation**
+   - Filter 311 complaints related to public restrooms
+   - Assign complaint timestamps into time groups
 
-Exploratory Data Analysis (EDA): Complaint volume patterns by time, borough, and restroom availability.
+3. **Geospatial Distance Calculation**
+   - Calculate distance from each complaint to nearest public restroom
 
-Spatial Analysis: Calculated nearest restroom distance for every complaint using Haversine distance.
+4. **Exploratory Data Analysis (EDA)**
+   - Distance distributions across time groups
+   - Borough-wise restroom availability analysis
 
-Statistical Modeling:
+5. **Statistical Modeling**
+   - Multiple Linear Regression
+   - ANOVA Tests
+   - Tukey's HSD Post-Hoc Analysis
 
-Multiple Linear Regression: Investigated how Time Group, Restroom Availability, and Borough affect distance to restrooms.
+6. **Geospatial Mapping**
+   - Hotspot identification
+   - Overlay of restroom locations and complaint density
 
-ANOVA and Tukey's HSD Tests: Compared restroom accessibility across boroughs.
+7. **Conclusions & Recommendations**
+   - Insights to improve restroom coverage and maintenance in NYC
 
-Mapping Visualizations:
+---
 
-Complaint hotspot mapping.
+# 📈 Key Findings
+- Complaints during **Morning** and **Late Night** periods show slightly higher restroom inaccessibility.
+- **Staten Island** has the highest average distance to public restrooms among boroughs.
+- **Regression results** show borough and restroom availability significantly influence complaint distances.
+- **Heatmaps** revealed specific complaint hotspots requiring better restroom availability.
 
-Overlay of complaints with public restroom locations.
+---
 
-Heatmaps of complaint densities.
+# 📥 Download Data
+You can download the full 311 service request dataset here:
 
-📋 Findings Summary
-Complaints are highest during Morning and Afternoon hours.
+🔗 [311_Service_Requests_from_2021_to_Present_20250427.csv (Google Drive Link)](https://drive.google.com/drive/folders/1CrIuw_c6kXsgvKGLi9GucV4uVyHpsyU1?usp=drive_link)
 
-Restroom availability drops significantly during Evening and Late Night.
+> *(Large file excluded from GitHub repository due to 100MB limit.)*
 
-Manhattan has the best public restroom accessibility; Staten Island has the worst.
+---
 
-Significant differences in restroom distances were confirmed between boroughs using ANOVA and Tukey HSD tests.
+# 🚀 How to Reproduce
 
-💡 Recommendations
-Extend operating hours of public restrooms, especially in the Evening and Late Night.
+1. **Clone this Repository**
+   ```bash
+   git clone https://github.com/vadityavathprashanth/NYC_Restroom_Analysis.git
+   ```
 
-Prioritize adding new restrooms or maintaining existing ones in underserved areas like Staten Island and parts of Queens.
+2. **Install Required R Packages**
+   ```r
+   install.packages(c("dplyr", "tidyverse", "lubridate", "geosphere", "broom", "ggplot2", "tidyr", "forcats"))
+   ```
 
-Focus on areas where complaint hotspots are not well-covered by existing restrooms.
+3. **Open and Knit**
+   - Open `toilet_analysis.Rmd` in RStudio.
+   - Knit the document to generate the final report PDF.
 
-📚 Acknowledgments
-NYC Open Data Portal — 311 Service Requests
+---
 
-NYC Open Data Portal — Public Restrooms Dataset
+# 📊 Project Structure
 
-✅ Project Completed: April 2025
-👨‍💻 Author: Prashanth Vadityavath | Jeet
+```bash
+Public_Toilet_Analysis/
+├── Data/                     # (Optional) Data directory
+├── toilet_analysis.Rmd        # RMarkdown analysis
+├── toilet_analysis.pdf        # Final report (generated)
+├── README.md                  # Project overview (this file)
+└── .gitignore
+```
+
+---
+
+# 📋 Final Notes
+- **Project Completed:** April 2025
+- **Potential Future Work:** Adding time-series prediction of restroom usage trends based on complaints over seasons.
+
+---
+
+# 🌟 Thank you for visiting the project!
+
+> Feel free to ⭐️ star the repo if you find it interesting!
+
+---
 
