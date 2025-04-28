@@ -2,7 +2,7 @@
 
 # NYC Public Restroom Analysis 🚻
 
- **Spatial and statistical analysis of NYC public restroom complaints using 311 data and restroom datasets.**
+**Spatial and statistical analysis of NYC public restroom complaints using 311 data and restroom datasets.**
 
 ---
 
